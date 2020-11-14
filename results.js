@@ -31,10 +31,11 @@ function runCrimeAPI(city, state) {
     fetch(`https://api.usa.gov/crime/fbi/sapi/api/agencies/byStateAbbr/${state}?API_KEY=pc8WGc1rAHyDfUlRWhD4f3VVd1Ni2usOnBjteg4N`)
         .then(response => response.json())
         .then(data => obj = data)
+        .then(() => console.log(obj))
         .then(
             function(departmentSearch) {
-                departmentObj = obj.find(findDepartment);
-                oriStr =departmentObj.ori;
+                departmentObj = obj.find(findDepartment);//stuck here
+                oriStr = departmentObj.ori;
             }
         ).then(
             function(cityAPIsearch) {
@@ -45,13 +46,9 @@ function runCrimeAPI(city, state) {
             }
         );
 
-        
-
-
 }
 
 function findDepartment(department) {
 
-   () => console.log(department);
     return department.name === (city + 'Police Department');
 }
