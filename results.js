@@ -27,12 +27,10 @@ document.addEventListener("DOMContentLoaded", function() {
 })
 
 function runCrimeAPI(city, state) {
-    var obj = new Array;
-    var departmentObj = new Array;
     fetch(`https://api.usa.gov/crime/fbi/sapi/api/agencies/byStateAbbr/${state}?API_KEY=pc8WGc1rAHyDfUlRWhD4f3VVd1Ni2usOnBjteg4N`)
         .then(response => response.json())
         .then(data => obj = data)
-        .then(console.log(obj));
+        .then(() =>console.log(obj));
 
 
 }
