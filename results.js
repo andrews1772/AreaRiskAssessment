@@ -1,3 +1,5 @@
+
+
 let urlParams;
 let oriValue;
 (window.onpopstate = function () {
@@ -18,11 +20,27 @@ function getCityState() {
     document.getElementById("city").innerHTML += city;
     document.getElementById("state").innerHTML += state;
     getOri(city, state);
+    getWeather(city, state);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
     getCityState();
 })
+
+function getWeather(city, state) {
+    jQuery.ajax({ 
+        url: "https://www.ncdc.noaa.gov/cdo-web/api/v2/locations?locationcategoryid=CITY&sortfield=name&sortorder=desc", 
+        data: {},
+        headers: { token:"TUgKoQwISqgfzYZHwINEEwkiMKjTWjRG"} ,
+        success: function(json) {
+            console.log(json.results);
+            
+        }
+    })
+
+
+    }
+
 
 function getOri(city, state) {
     fetch('https://api.usa.gov/crime/fbi/sapi/api/agencies/list?API_KEY=7UqhaLCBzBdtdbC55K1C4WOfDLw95A4gCy9fa8RD')
