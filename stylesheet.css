@@ -1,3 +1,74 @@
 .title {
-    font-size: 72px;
+    font-size: 90px;
+    color: white;
+}
+
+.stateMap {
+    max-width: 75%;
+    max-length: 75%;
+}
+
+.navbar-custom {
+    background-color: #0288d1
+}
+
+.navbar-custom .navbar-brand, .navbar-custom .navbar-text {
+    color: white;
+}
+
+.navText {
+    color: white;
+    padding-right: 5px;
+}
+
+.titleContainer {
+    background-color: #0288d1;
+    padding: 50px;
+}
+
+.input {
+    padding-top: 50px;
+}
+
+.topCities {
+    padding-bottom: 60px;
+}
+
+.listTitle {
+    background-color: #0288d1;
+    color: white;
+}
+
+.topCitiesResults {
+    padding-bottom: 60px;
+}
+
+.panels {
+    padding-bottom: 200px;
+}
+
+.info {
+    color:black;
+}
+
+.helpList {
+    padding-left: 35px;
+    font-size:24px;
+    padding-bottom: 200px;
+}
+
+.helpButton {
+    padding-left: 8px;
+}
+
+a.helpButtonNav:link {
+    color:white;
+}
+
+a.helpButtonNav:visited {
+    color:white;
+}
+
+a.helpButtonNav:hover {
+    color:darkgray;
 }

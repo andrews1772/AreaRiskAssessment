@@ -10,25 +10,175 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script defer src="results.js" charset="utf-8"></script>
+    <script src="https://kit.fontawesome.com/c9eb3a95ef.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="stylesheet.css">
     <title>Results</title>
 </head>
 <body>
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand">Area Outlook</a>
-    <form class="form-inline">
+<nav class="navbar navbar-custom">
+    <a href="index.html" class="navbar-brand" href="#">
+        <img src="images/houseLogo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        Area Risk Assessment
+    </a>
+    <form class="form-inline needs-validation" novalidate>
         <form action="results.html" method="GET">
-            <input type="text" class="form-control" placeholder="City" id="citySearch" name="citySearch">
-            <input type="text" class="form-control" placeholder="State" maxlength="2" id="stateSearch" name="stateSearch">
-            <input type="submit" value="submit">
+            <a class="navText">New Search:</a>
+            <input type="text" class="form-control" placeholder="City" id="citySearch" name="citySearch" required>
+            <input type="text" class="form-control" placeholder="State" maxlength="2" id="stateSearch" name="stateSearch" required>
+            <input class="btn btn-light" type="submit" value="Search"><a href="help.html" class="helpButton helpButtonNav"><i class="far fa-question-circle"></i></a>
     </form>
 </nav>
 
+<script>
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            let forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            let validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
 
-<h1 id="city">City: </h1>
-<h1 id="state">State: </h1>
-<h1 id="ori">ORI: </h1>
-<h1 id="violent-crime">Violent Crime: </h1>
+<br><br><br>
+<h1 class="text-center" id="cityState"></h1>
+<div class="container">
+    <div class="row">
+        <div class="list-group topCities topCitiesResults col col-lg-2">
+            <a class="list-group-item listTitle">
+                Most Popular Cities:
+            </a>
+            <a href="results.html?citySearch=New York City&stateSearch=NY" class="list-group-item list-group-item-action">New York City, NY</a>
+            <a href="results.html?citySearch=Los Angeles&stateSearch=CA" class="list-group-item list-group-item-action">Los Angeles, CA</a>
+            <a href="results.html?citySearch=Chicago&stateSearch=IL" class="list-group-item list-group-item-action">Chicago, IL</a>
+            <a href="results.html?citySearch=Houston&stateSearch=TX" class="list-group-item list-group-item-action">Houston, TX</a>
+            <a href="results.html?citySearch=Phoenix&stateSearch=AZ" class="list-group-item list-group-item-action">Phoenix, AZ</a>
+            <a href="results.html?citySearch=Philadelphia&stateSearch=PA" class="list-group-item list-group-item-action">Philadelphia, PA</a>
+            <a href="results.html?citySearch=San Antonio&stateSearch=TX" class="list-group-item list-group-item-action">San Antonio, TX</a>
+            <a href="results.html?citySearch=San Diego&stateSearch=CA" class="list-group-item list-group-item-action">San Diego, CA</a>
+            <a href="results.html?citySearch=Dallas&stateSearch=TX" class="list-group-item list-group-item-action">Dallas, TX</a>
+            <a href="results.html?citySearch=San Jose&stateSearch=CA" class="list-group-item list-group-item-action">San Jose, CA</a>
+        </div>
+        <div class="col" id="stateImg"></div>
+    </div>
+</div>
+<div class="container panels">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+<div class="accordion" id="accordionExample">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+                <button class="btn btn-link info collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <u>General Information</u> ▼
+                </button>
+            </h2>
+        </div>
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li id="county">County: </li>
+                    <li id="elevation">Elevation: </li>
+                    <li id="lat">Latitude: </li>
+                    <li id="long">Longitude: </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+                <button class="btn btn-link info collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <u>Weather</u> ▼
+                </button>
+            </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li>Winter:
+                        <ul>Average Temp: <a id="winAvg"></a> °F</ul>
+                        <ul>Average High Temp: <a id="winAvgHigh"></a> °F</ul>
+                        <ul>Average Low Temp: <a id="winAvgLow"></a> °F</ul>
+                    </li>
+                    <li>Spring:
+                        <ul>Average Temp: <a id="sprAvg"></a> °F</ul>
+                        <ul>Average High Temp: <a id="sprAvgHigh"></a> °F</ul>
+                        <ul>Average Low Temp: <a id="sprAvgLow"></a> °F</ul>
+                    </li>
+                    <li>Summer:
+                        <ul>Average Temp: <a id="sumAvg"></a> °F</ul>
+                        <ul>Average High Temp: <a id="sumAvgHigh"></a> °F</ul>
+                        <ul>Average Low Temp: <a id="sumAvgLow"></a> °F</ul>
+                    </li>
+                    <li>Fall:
+                        <ul>Average Temp: <a id="falAvg"></a> °F</ul>
+                        <ul>Average High Temp: <a id="falAvgHigh"></a> °F</ul>
+                        <ul>Average Low Temp: <a id="falAvgLow"></a> °F</ul>
+                    </li><br>
+                    <li id="precipDays">Days of Precipitation Yearly: </li>
+                    <li id="precipYear">Yearly Precipitation (in): </li>
+                    <li id="snowDays">Days of Snowfall Yearly: </li>
+                    <li id="snowYear">Yearly Snowfall (in): </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+                <button class="btn btn-link info collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <u>Crime Data</u> ▼
+                </button>
+            </h2>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li><a id="totalCrime"></a>
+                        <ul id="crimeType">
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingFour">
+            <h2 class="mb-0">
+                <button class="btn btn-link info collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <u>Natural Disasters</u> ▼
+                </button>
+            </h2>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour">
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li><a id="disasters"></a>
+                        <ul id="disasterDetail">
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+
+
+
+
 
 <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script>
