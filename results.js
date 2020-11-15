@@ -66,7 +66,11 @@ function getCoordinates(city, state) {
         } else {
 
             //use this for website
-            document.getElementById("county").innerHTML += county;
+            if (county != null ) {
+                document.getElementById("county").innerHTML += county;
+            } else {
+                document.getElementById("county").innerHTML += "No Data";
+            }
             document.getElementById("lat").innerHTML += lat;
             document.getElementById("long").innerHTML += long;
 
@@ -92,7 +96,11 @@ function getAirQuality(city, state, lat, long, county) {
                 //thats not good
             } else {
                 var aqi = json.data.current.pollution.aqius;
-                document.getElementById("aqi").innerHTML += aqi;
+                if (aqi != null ) {
+                    document.getElementById("aqi").innerHTML += aqi;
+                } else {
+                    document.getElementById("aqi").innerHTML += "No Data";
+                }
                 getWeather(city, state, lat, long), county;
             }
         })
@@ -170,7 +178,11 @@ function getStationClimate(stationID, dailyData) {
         .then(result => result.json())
         .then(function(json) {
             elevation = (json.data.elevation * 3.28084).toFixed(1);
-            document.getElementById("elevation").innerHTML += elevation;
+            if (elevation != null ) {
+                document.getElementById("elevation").innerHTML += elevation;
+            } else {
+                document.getElementById("elevation").innerHTML += "No Data";
+            }
             start = json.data.inventory.daily.start;
             end = json.data.inventory.daily.end;
             var startInt = parseInt(start.substring(0,4));
