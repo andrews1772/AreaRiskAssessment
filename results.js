@@ -35,14 +35,15 @@ function getCoordinates(city, state) {
     fetch (uriEncoded)
     .then(result => result.json())
     .then(function(json) {
-        console.log(json);
         length = json.results.length;
         var i;
         var maxConfidence = 0;
+        var iMax = 0;
         for(i = 0; i <length; i++) {
             if (json.results[i].confidence > 0) {
                 if (json.results[i].confidence >= maxConfidence) {
                     maxConfidence = json.results[i].confidence;
+                    iMax = i;
                     lat = json.results[i].geometry.lat;
                     long = json.results[i].geometry.lng;
                     county = json.results[i].components.county
@@ -52,6 +53,12 @@ function getCoordinates(city, state) {
         if (maxConfidence == 0) {
         //no good match found    
         } else {
+
+            //use this for website
+            document.getElementById("county").innerHTML += county;
+            document.getElementById("lat").innerHTML += lat;
+            document.getElementById("long").innerHTML += long;
+
             getAirQuality(city, state, lat, long, county);
         }
     })
@@ -70,10 +77,11 @@ function getAirQuality(city, state, lat, long, county) {
       fetch("http://api.airvisual.com/v2/nearest_city?lat=" + lat + "&lon=" + long + "&key=2b705434-b20d-4352-b97d-e7aacd89cfde", requestOptions)
         .then(result => result.json())
         .then(function(json) {
-            console.log(json);
             if (json.data.message == 'city_not_found') {
                 //thats not good
             } else {
+                var aqi = json.data.current.pollution.aqius;
+                document.getElementById("aqi").innerHTML += lat;
                 getWeather(city, state, lat, long), county;
             }
         })
@@ -92,7 +100,6 @@ function getWeather(city, state, lat, long, county) {
     })
     .then(result => result.json())
     .then(function(json) {
-        //console.log(json.data);
         if (json.data == null) {
           //not good
         } else {
@@ -151,7 +158,7 @@ function getStationClimate(stationID, dailyData) {
         })
         .then(result => result.json())
         .then(function(json) {
-            console.log(json);
+            document.getElementById("elevation").innerHTML += elevation;
             start = json.data.inventory.daily.start;
             end = json.data.inventory.daily.end;
             var startInt = parseInt(start.substring(0,4));
@@ -165,7 +172,7 @@ function getStationClimate(stationID, dailyData) {
     .catch(error => console.log('error', error));
     foundValidStation = true;
 } else {
-    //gfy
+
 }
 }
 
@@ -302,40 +309,62 @@ function sumAverages(data) {
     }
 
 
-        winterAvg = winterSum / 90;
-        winterAvgMax = winterSumMax / 90;
-        winterAvgMin = winterSumMin / 90;
+        winAvg = winterSum / 90;
+        winAvgMax = winterSumMax / 90;
+        winAvgMin = winterSumMin / 90;
 
-        summerAvg = summerSum / 90;
-        summerAvgMax = summerSumMax / 90;
-        summerAvgMin = summerSumMin / 90;
+        sumAvg = summerSum / 90;
+        sumAvgMax = summerSumMax / 90;
+        sumAvgMin = summerSumMin / 90;
 
-        springAvg = springSum / 90;
-        springAvgMax = springSumMax / 90;
-        springAvgMin = springSumMin / 90;
+        sprAvg = springSum / 90;
+        sprAvgMax = springSumMax / 90;
+        sprAvgMin = springSumMin / 90;
 
         fallAvg = fallSum / 90;
         fallAvgMax = fallSumMax / 90;
         fallAvgMin = fallSumMin / 90;
 
-        console.log("Winter Average: " + winterAvg);
+        var conversion = 1.8;
+        fallAvg = ((fallAvg * 1.8) + 32);
+        winAvg = ((winAvg * 1.8) + 32);
+        sumAvg = ((sumAvg * 1.8) + 32);
+        sprAvg = ((sprAvg * 1.8) + 32);
+
+        fallAvgMin = ((fallAvgMin * 1.8) + 32).toFixed(1);
+        winAvgMin = ((winAvgMin * 1.8) + 32).toFixed(1);
+        sumAvgMin = ((sumAvgMin * 1.8) + 32).toFixed(1);
+        sprAvgMin = ((sprAvgMin * 1.8) + 32).toFixed(1);
         
-        console.log("Winter Average Low: " + winterAvgMin);
-        
-        console.log("Winter Average High: " + winterAvgMax);
+        fallAvgMax = ((fallAvgMax * 1.8) + 32).toFixed(1);
+        winAvgMax = ((winAvgMax * 1.8) + 32).toFixed(1);
+        sumAvgMax = ((sumAvgMax * 1.8) + 32).toFixed(1);
+        sprAvgMax = ((sprAvgMax * 1.8) + 32).toFixed(1);
+
+        prcpAmount = (prcpAmount / 25.4).toFixed(1);
+
+        snowAmount = (snowAmount / 25.4).toFixed(1);
 
 
+        document.getElementById("winAvg").innerHTML += winAvg;
+        document.getElementById("sprAvg").innerHTML += sprAvg;
+        document.getElementById("sumAvg").innerHTML += sumAvg;
+        document.getElementById("fallAvg").innerHTML += fallAVg;
 
-        console.log("Days of Precipitation: " + prcpDays);
+        document.getElementById("winAvgMin").innerHTML += winAvgMin;
+        document.getElementById("sprAvgMin").innerHTML += sprAvgMin;
+        document.getElementById("sumAvgMin").innerHTML += sumAvgMin;
+        document.getElementById("fallAvgMin").innerHTML += fallAVgMin;
 
-        console.log("Precipitation Amount (mm): " + prcpAmount);
+        document.getElementById("winAvgMax").innerHTML += winAvgMax;
+        document.getElementById("sprAvgMax").innerHTML += sprAvgMax;
+        document.getElementById("sumAvgMax").innerHTML += sumAvgMax;
+        document.getElementById("fallAvgMax").innerHTML += fallAvgMax;
 
-        console.log("Days of Snow: " + snowDays);
-
-        console.log("Precipitation Amount (mm): " + snowAmount);
-
-    
-
+        document.getElementById("precipDays").innerHTML += prcpDays;
+        document.getElementById("snowDays").innerHTML += snowDays;
+        document.getElementById("snowYear").innerHTML += snowAmount;
+        document.getElementById("precipYear").innerHTML += prcpAmount;
 
 }
 
