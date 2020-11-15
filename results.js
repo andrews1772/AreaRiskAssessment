@@ -84,7 +84,7 @@ function getAirQuality(city, state, lat, long, county) {
                 //thats not good
             } else {
                 var aqi = json.data.current.pollution.aqius;
-                document.getElementById("aqi").innerHTML += lat;
+                document.getElementById("aqi").innerHTML += aqi;
                 getWeather(city, state, lat, long), county;
             }
         })
@@ -161,6 +161,7 @@ function getStationClimate(stationID, dailyData) {
         })
         .then(result => result.json())
         .then(function(json) {
+            elevation = (json.data.elevation * 3.28084).toFixed(1);
             document.getElementById("elevation").innerHTML += elevation;
             start = json.data.inventory.daily.start;
             end = json.data.inventory.daily.end;
@@ -327,12 +328,11 @@ function sumAverages(data) {
         fallAvg = fallSum / 90;
         fallAvgMax = fallSumMax / 90;
         fallAvgMin = fallSumMin / 90;
-
         var conversion = 1.8;
-        fallAvg = ((fallAvg * 1.8) + 32);
-        winAvg = ((winAvg * 1.8) + 32);
-        sumAvg = ((sumAvg * 1.8) + 32);
-        sprAvg = ((sprAvg * 1.8) + 32);
+        fallAvg = ((fallAvg * 1.8) + 32).toFixed(1);;
+        winAvg = ((winAvg * 1.8) + 32).toFixed(1);;
+        sumAvg = ((sumAvg * 1.8) + 32).toFixed(1);;
+        sprAvg = ((sprAvg * 1.8) + 32).toFixed(1);;
 
         fallAvgMin = ((fallAvgMin * 1.8) + 32).toFixed(1);
         winAvgMin = ((winAvgMin * 1.8) + 32).toFixed(1);
@@ -352,12 +352,12 @@ function sumAverages(data) {
         document.getElementById("winAvg").innerHTML += winAvg;
         document.getElementById("sprAvg").innerHTML += sprAvg;
         document.getElementById("sumAvg").innerHTML += sumAvg;
-        document.getElementById("fallAvg").innerHTML += fallAVg;
+        document.getElementById("fallAvg").innerHTML += fallAvg;
 
         document.getElementById("winAvgMin").innerHTML += winAvgMin;
         document.getElementById("sprAvgMin").innerHTML += sprAvgMin;
         document.getElementById("sumAvgMin").innerHTML += sumAvgMin;
-        document.getElementById("fallAvgMin").innerHTML += fallAVgMin;
+        document.getElementById("fallAvgMin").innerHTML += fallAvgMin;
 
         document.getElementById("winAvgMax").innerHTML += winAvgMax;
         document.getElementById("sprAvgMax").innerHTML += sprAvgMax;

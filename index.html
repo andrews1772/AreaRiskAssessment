@@ -25,7 +25,7 @@
         <div class="col-lg-10 mx-auto">
                 <form action="results.html" method="GET" class="needs-validation" novalidate>
                 <label for="citySearch">City:</label>
-                <input type="text" class="form-control" pattern="[A-Za-z]+" placeholder="City" id="citySearch" name="citySearch" required/>
+                <input type="text" class="form-control" pattern="[A-Za-z\s]+" placeholder="City" id="citySearch" name="citySearch" required/>
                 <label for="stateSearch">State:</label>
                 <input type="text" class="form-control" pattern="^(?:(A[KLRZ]|C[AOT]|D[CE]|FL|GA|HI|I[ADLN]|K[SY]|LA|M[ADEINOST]|N[CDEHJMVY]|O[HKR]|P[AR]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]))$" placeholder="State Abbreviation" id="stateSearch" name="stateSearch" required/> <br>
                 <input class="btn btn-info" type="submit" value="Submit"/><a href="help.html" class="helpButton"><i class="far fa-question-circle"></i></a>
