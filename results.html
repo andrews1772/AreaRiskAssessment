@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script defer src="results.js" charset="utf-8"></script>
+    <script src="https://kit.fontawesome.com/c9eb3a95ef.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="stylesheet.css">
     <title>Results</title>
 </head>
@@ -15,16 +16,36 @@
 <nav class="navbar navbar-custom">
     <a href="index.html" class="navbar-brand" href="#">
         <img src="images/houseLogo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-        Area Outlook
+        Area Risk Assessment
     </a>
-    <form class="form-inline">
+    <form class="form-inline needs-validation" novalidate>
         <form action="results.html" method="GET">
             <a class="navText">New Search:</a>
-            <input type="text" class="form-control" placeholder="City" id="citySearch" name="citySearch">
-            <input type="text" class="form-control" placeholder="State" maxlength="2" id="stateSearch" name="stateSearch">
-            <input class="btn btn-light" type="submit" value="Search">
+            <input type="text" class="form-control" placeholder="City" id="citySearch" name="citySearch" required>
+            <input type="text" class="form-control" placeholder="State" maxlength="2" id="stateSearch" name="stateSearch" required>
+            <input class="btn btn-light" type="submit" value="Search"><a href="help.html" class="helpButton helpButtonNav"><i class="far fa-question-circle"></i></a>
     </form>
 </nav>
+
+<script>
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            let forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            let validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
 
 <br><br><br>
 <h1 class="text-center" id="cityState"></h1>
@@ -38,7 +59,7 @@
             <a href="results.html?citySearch=Los Angeles&stateSearch=CA" class="list-group-item list-group-item-action">Los Angeles, CA</a>
             <a href="results.html?citySearch=Chicago&stateSearch=IL" class="list-group-item list-group-item-action">Chicago, IL</a>
             <a href="results.html?citySearch=Houston&stateSearch=TX" class="list-group-item list-group-item-action">Houston, TX</a>
-            <a href="results.html?citySearch=Phoenix&stateSearch=AZ" class="list-group-item list-group-item-action">Phoeniz, AZ</a>
+            <a href="results.html?citySearch=Phoenix&stateSearch=AZ" class="list-group-item list-group-item-action">Phoenix, AZ</a>
             <a href="results.html?citySearch=Philadelphia&stateSearch=PA" class="list-group-item list-group-item-action">Philadelphia, PA</a>
             <a href="results.html?citySearch=San Antonio&stateSearch=TX" class="list-group-item list-group-item-action">San Antonio, TX</a>
             <a href="results.html?citySearch=San Diego&stateSearch=CA" class="list-group-item list-group-item-action">San Diego, CA</a>
@@ -48,48 +69,54 @@
         <div class="col" id="stateImg"></div>
     </div>
 </div>
-<div class="container">
+<div class="container panels">
     <div class="row">
         <div class="col-lg-10 mx-auto">
 <div class="accordion" id="accordionExample">
     <div class="card">
         <div class="card-header" id="headingOne">
             <h2 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    Crime ▼
+                <button class="btn btn-link info collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <u>Crime Data</u> ▼
                 </button>
             </h2>
         </div>
 
         <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
             <div class="card-body">
-                <p id="totalCrime"></p>
-                <br>
-                <p id="violentCrime"></p>
-                <p id="propertyCrime"></p>
+                <ul class="list-unstyled">
+                    <li><a id="totalCrime"></a>
+                        <ul id="crimeType">
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
     <div class="card">
         <div class="card-header" id="headingTwo">
             <h2 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Natural Disasters ▼
+                <button class="btn btn-link info collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <u>Natural Disasters</u> ▼
                 </button>
             </h2>
         </div>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
             <div class="card-body">
-                <p id="disasters"></p>
-                <p id="disasterDetail"></p>
+                <ul class="list-unstyled">
+                    <li><a id="disasters"></a>
+                        <ul id="disasterDetail">
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
     <div class="card">
         <div class="card-header" id="headingThree">
             <h2 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Collapsible Group Item #3 ▼
+                <button class="btn btn-link info collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <u>Collapsible Group Item #3</u> ▼
                 </button>
             </h2>
         </div>
