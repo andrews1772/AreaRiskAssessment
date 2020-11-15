@@ -30,25 +30,16 @@ function runCrimeAPI(city, state) {
     var obj = new Array();
     fetch(`https://api.usa.gov/crime/fbi/sapi/api/agencies/byStateAbbr/${state}?API_KEY=pc8WGc1rAHyDfUlRWhD4f3VVd1Ni2usOnBjteg4N`)
         .then(response => response.json())
-        .then(data => obj = data)
-        .then(() => console.log(obj))
-        .then(
-            function(departmentSearch) {
-                departmentObj = obj.find(findDepartment);//stuck here
-                oriStr = departmentObj.ori;
-            }
-        ).then(
-            function(cityAPIsearch) {
-                fetch(`https://api.usa.gov/crime/fbi/sapi/api/summarized/agencies/${oriStr}/offenses/2019/2019?API_KEY=pc8WGc1rAHyDfUlRWhD4f3VVd1Ni2usOnBjteg4N`)
-                .then(response => response.json())
-                .then(data => crimeData = data)
-                .then(() => console.log(crimeData))
-            }
+        .then( function(json) {
+            departmentSearch(json, city, state)
+        }
         );
 
 }
 
-function findDepartment(department) {
-
-    return department.name === (city + 'Police Department');
+function departmentSearch(data, city, state) {
+    console.log(data);
+    department = data.results.find( ({ agency_name } ) => agency_name === (city  + ' Police Department'));
+    console.log(department);
+    
 }
