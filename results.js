@@ -1,7 +1,9 @@
 
 
+
 let urlParams;
 let oriValue;
+
 (window.onpopstate = function () {
     let match,
         pl     = /\+/g,  // Regex for replacing addition symbol with a space
@@ -15,6 +17,7 @@ let oriValue;
 })();
 
 function getCityState() {
+
     let city = urlParams["citySearch"];
     let state = urlParams["stateSearch"]
 
@@ -24,10 +27,15 @@ function getCityState() {
     getCoordinates(city, state);
     getOri(city, state);
     //getNumberOfDisastersInState(state);
+
+    document.getElementById("city").innerHTML = urlParams["citySearch"];
+    document.getElementById("state").innerHTML = urlParams["stateSearch"];
+
 }
 
 document.addEventListener("DOMContentLoaded", function() {
     getCityState();
+
 })
 
 
@@ -624,3 +632,4 @@ function processDisasters(data, state){
     }
     document.getElementById("disasterDetail").innerHTML = disasterDetails;
 }
+
