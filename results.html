@@ -77,12 +77,69 @@
         <div class="card-header" id="headingOne">
             <h2 class="mb-0">
                 <button class="btn btn-link info collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <u>General Information</u> ▼
+                </button>
+            </h2>
+        </div>
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li id="county">County: </li>
+                    <li id="elevation">Elevation: </li>
+                    <li id="lat">Latitude: </li>
+                    <li id="long">Longitude: </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+                <button class="btn btn-link info collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <u>Weather</u> ▼
+                </button>
+            </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li>Winter:
+                        <ul>Average Temp: <a id="winAvg"></a> °F</ul>
+                        <ul>Average High Temp: <a id="winAvgHigh"></a> °F</ul>
+                        <ul>Average Low Temp: <a id="winAvgLow"></a> °F</ul>
+                    </li>
+                    <li>Spring:
+                        <ul>Average Temp: <a id="sprAvg"></a> °F</ul>
+                        <ul>Average High Temp: <a id="sprAvgHigh"></a> °F</ul>
+                        <ul>Average Low Temp: <a id="sprAvgLow"></a> °F</ul>
+                    </li>
+                    <li>Summer:
+                        <ul>Average Temp: <a id="sumAvg"></a> °F</ul>
+                        <ul>Average High Temp: <a id="sumAvgHigh"></a> °F</ul>
+                        <ul>Average Low Temp: <a id="sumAvgLow"></a> °F</ul>
+                    </li>
+                    <li>Fall:
+                        <ul>Average Temp: <a id="falAvg"></a> °F</ul>
+                        <ul>Average High Temp: <a id="falAvgHigh"></a> °F</ul>
+                        <ul>Average Low Temp: <a id="falAvgLow"></a> °F</ul>
+                    </li><br>
+                    <li id="precipDays">Days of Precipitation Yearly: </li>
+                    <li id="precipYear">Yearly Precipitation (in): </li>
+                    <li id="snowDays">Days of Snowfall Yearly: </li>
+                    <li id="snowYear">Yearly Snowfall (in): </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+                <button class="btn btn-link info collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                     <u>Crime Data</u> ▼
                 </button>
             </h2>
         </div>
-
-        <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
             <div class="card-body">
                 <ul class="list-unstyled">
                     <li><a id="totalCrime"></a>
@@ -94,14 +151,14 @@
         </div>
     </div>
     <div class="card">
-        <div class="card-header" id="headingTwo">
+        <div class="card-header" id="headingFour">
             <h2 class="mb-0">
-                <button class="btn btn-link info collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <button class="btn btn-link info collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                     <u>Natural Disasters</u> ▼
                 </button>
             </h2>
         </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour">
             <div class="card-body">
                 <ul class="list-unstyled">
                     <li><a id="disasters"></a>
@@ -109,20 +166,6 @@
                         </ul>
                     </li>
                 </ul>
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header" id="headingThree">
-            <h2 class="mb-0">
-                <button class="btn btn-link info collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    <u>Collapsible Group Item #3</u> ▼
-                </button>
-            </h2>
-        </div>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
-            <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
             </div>
         </div>
     </div>
