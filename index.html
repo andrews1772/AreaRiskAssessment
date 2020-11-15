@@ -12,18 +12,43 @@
     <title>Area Risk Assessment</title>
 </head>
 <body>
+<div class="titleContainer">
+    <p class="text-center title">Area Risk Assessment</p>
+</div>
 
-<p class="text-center title">Area Risk Assessment</p>
-<div class="container">
+
+<div class="container input">
     <div class="row">
-        <div class="col-lg-6 mx-auto">
-            <div class="input-group">
-                <form action="results.html" method="GET" class="form-inline">
-                <input type="text" class="form-control" placeholder="City" id="citySearch" name="citySearch"/>
-                <input type="text" class="form-control" placeholder="State" maxlength="2" id="stateSearch" name="stateSearch"/>
-                <input type="submit" value="submit"/>
+        <div class="col-lg-10 mx-auto">
+                <form action="results.html" method="GET">
+                <label for="citySearch">City:</label>
+                <input type="text" class="form-control" pattern="[A-Za-z]+" placeholder="City" id="citySearch" minlength="1" name="citySearch"/>
+                <label for="stateSearch">State:</label>
+                <input type="text" class="form-control" pattern="^(?:(A[KLRZ]|C[AOT]|D[CE]|FL|GA|HI|I[ADLN]|K[SY]|LA|M[ADEINOST]|N[CDEHJMVY]|O[HKR]|P[AR]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]))$" placeholder="State Abbreviation" maxlength="2" minlength="2" id="stateSearch" name="stateSearch"/> <br>
+                <input class="btn btn-secondary" type="submit" value="submit"/>
                 </form>
-            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container input">
+    <div class="row">
+        <div class="col-lg-5 mx-auto">
+<div class="list-group topCities">
+    <a class="list-group-item listTitle">
+        Most Popular Cities:
+    </a>
+    <a href="results.html?citySearch=New York City&stateSearch=NY" class="list-group-item list-group-item-action">New York City, NY</a>
+    <a href="results.html?citySearch=Los Angeles&stateSearch=CA" class="list-group-item list-group-item-action">Los Angeles, CA</a>
+    <a href="results.html?citySearch=Chicago&stateSearch=IL" class="list-group-item list-group-item-action">Chicago, IL</a>
+    <a href="results.html?citySearch=Houston&stateSearch=TX" class="list-group-item list-group-item-action">Houston, TX</a>
+    <a href="results.html?citySearch=Phoenix&stateSearch=AZ" class="list-group-item list-group-item-action">Phoeniz, AZ</a>
+    <a href="results.html?citySearch=Philadelphia&stateSearch=PA" class="list-group-item list-group-item-action">Philadelphia, PA</a>
+    <a href="results.html?citySearch=San Antonio&stateSearch=TX" class="list-group-item list-group-item-action">San Antonio, TX</a>
+    <a href="results.html?citySearch=San Diego&stateSearch=CA" class="list-group-item list-group-item-action">San Diego, CA</a>
+    <a href="results.html?citySearch=Dallas&stateSearch=TX" class="list-group-item list-group-item-action">Dallas, TX</a>
+    <a href="results.html?citySearch=San Jose&stateSearch=CA" class="list-group-item list-group-item-action">San Jose, CA</a>
+</div>
         </div>
     </div>
 </div>
