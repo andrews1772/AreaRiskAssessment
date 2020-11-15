@@ -21,9 +21,9 @@ function getCityState() {
     stateImage(state);
     document.getElementById("cityState").innerHTML = 'Information about ' + city + ', ' + state;
 
-    //getCoordinates(city, state);
+    getCoordinates(city, state);
     getOri(city, state);
-    getNumberOfDisastersInState(state);
+    //getNumberOfDisastersInState(state);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -532,14 +532,17 @@ function abbrState(input, to){
 
 let totalCrime = 0;
 
+
 function violentCrime(ori) {
     fetch ('https://api.usa.gov/crime/fbi/sapi/api/summarized/agencies/' + ori + '/violent-crime/2019/2019?API_KEY=7UqhaLCBzBdtdbC55K1C4WOfDLw95A4gCy9fa8RD')
         .then(res => res.json())
         .then(function(json){
             if (json.results.length > 0) {
-                document.getElementById("crimeType").innerHTML += '<li>Violent Crime: ' + json.results[0].actual + ' </li>';
+                violentCrimeFormatted = numberWithCommas(json.results[0].actual);
+                document.getElementById("crimeType").innerHTML += '<li>Violent Crime: ' +   violentCrimeFormatted + ' </li>';
                 totalCrime += json.results[0].actual;
-                document.getElementById("totalCrime").innerHTML = 'Total Crime Incidents in 2019: ' + totalCrime;
+                totalCrimeFormatted = numberWithCommas(totalCrime);
+                document.getElementById("totalCrime").innerHTML = 'Total Crime Incidents in 2019: ' + totalCrimeFormatted;
             } else {
                 document.getElementById("totalCrime").innerHTML = 'No Data Found';
             }
@@ -551,13 +554,27 @@ function propertyCrime(ori) {
         .then(res => res.json())
         .then(function(json){
             if (json.results.length > 0) {
-                document.getElementById("crimeType").innerHTML += '<li>Property Crime: ' + json.results[0].actual + ' </li>';
+                propertyCrimeFormatted = numberWithCommas(json.results[0].actual);
+                document.getElementById("crimeType").innerHTML += '<li>Property Crime: ' +   propertyCrimeFormatted + ' </li>';
                 totalCrime += json.results[0].actual;
-                document.getElementById("totalCrime").innerHTML = 'Total Crime Incidents in 2019: ' + totalCrime;
+                totalCrimeFormatted = numberWithCommas(totalCrime);
+                document.getElementById("totalCrime").innerHTML = 'Total Crime Incidents in 2019: ' + totalCrimeFormatted;
             } else {
                 document.getElementById("totalCrime").innerHTML = 'No Data Found';
             }
         })
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+function getNumberOfDisastersInState(state){
+    fetch('FemaWebDisasterDeclarations.json')
+        .then(res => res.json())
+        .then(function(json){
+            processDisasters(json.FemaWebDisasterDeclarations, state);
+        })
+        .catch(error => console.log('error', error));
 }
 
 function getNumberOfDisastersInState(state){
