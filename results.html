@@ -12,21 +12,101 @@
     <title>Results</title>
 </head>
 <body>
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand">Area Outlook</a>
+<nav class="navbar navbar-custom">
+    <a href="index.html" class="navbar-brand" href="#">
+        <img src="images/houseLogo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        Area Outlook
+    </a>
     <form class="form-inline">
         <form action="results.html" method="GET">
+            <a class="navText">New Search:</a>
             <input type="text" class="form-control" placeholder="City" id="citySearch" name="citySearch">
             <input type="text" class="form-control" placeholder="State" maxlength="2" id="stateSearch" name="stateSearch">
-            <input type="submit" value="submit">
+            <input class="btn btn-light" type="submit" value="Search">
     </form>
 </nav>
 
+<br><br><br>
+<h1 class="text-center" id="cityState"></h1>
+<div class="container">
+    <div class="row">
+        <div class="list-group topCities topCitiesResults col col-lg-2">
+            <a class="list-group-item listTitle">
+                Most Popular Cities:
+            </a>
+            <a href="results.html?citySearch=New York City&stateSearch=NY" class="list-group-item list-group-item-action">New York City, NY</a>
+            <a href="results.html?citySearch=Los Angeles&stateSearch=CA" class="list-group-item list-group-item-action">Los Angeles, CA</a>
+            <a href="results.html?citySearch=Chicago&stateSearch=IL" class="list-group-item list-group-item-action">Chicago, IL</a>
+            <a href="results.html?citySearch=Houston&stateSearch=TX" class="list-group-item list-group-item-action">Houston, TX</a>
+            <a href="results.html?citySearch=Phoenix&stateSearch=AZ" class="list-group-item list-group-item-action">Phoeniz, AZ</a>
+            <a href="results.html?citySearch=Philadelphia&stateSearch=PA" class="list-group-item list-group-item-action">Philadelphia, PA</a>
+            <a href="results.html?citySearch=San Antonio&stateSearch=TX" class="list-group-item list-group-item-action">San Antonio, TX</a>
+            <a href="results.html?citySearch=San Diego&stateSearch=CA" class="list-group-item list-group-item-action">San Diego, CA</a>
+            <a href="results.html?citySearch=Dallas&stateSearch=TX" class="list-group-item list-group-item-action">Dallas, TX</a>
+            <a href="results.html?citySearch=San Jose&stateSearch=CA" class="list-group-item list-group-item-action">San Jose, CA</a>
+        </div>
+        <div class="col" id="stateImg"></div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+<div class="accordion" id="accordionExample">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Crime ▼
+                </button>
+            </h2>
+        </div>
 
-<h1 id="city">City: </h1>
-<h1 id="state">State: </h1>
-<h1 id="ori">ORI: </h1>
-<h1 id="violent-crime">Violent Crime: </h1>
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
+            <div class="card-body">
+                <p id="totalCrime"></p>
+                <br>
+                <p id="violentCrime"></p>
+                <p id="propertyCrime"></p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Natural Disasters ▼
+                </button>
+            </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
+            <div class="card-body">
+                <p id="disasters"></p>
+                <p id="disasterDetail"></p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Collapsible Group Item #3 ▼
+                </button>
+            </h2>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
+            <div class="card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+
+
+
+
 
 <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
