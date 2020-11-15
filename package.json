@@ -1,0 +1,22 @@
+{
+  "name": "npm",
+  "version": "1.0.0",
+  "description": "Andrew Sanchez &amp; Jonathan Nutter - Hacking challenge for Hack Ohio - State Auto 2020",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrews1772/HackOhio2020-StateAuto.git"
+  },
+  "author": "Andrew Sanchez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrews1772/HackOhio2020-StateAuto/issues"
+  },
+  "homepage": "https://github.com/andrews1772/HackOhio2020-StateAuto#readme",
+  "dependencies": {
+    "jquery": "^3.5.1"
+  }
+}
