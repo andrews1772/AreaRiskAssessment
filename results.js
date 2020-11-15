@@ -115,9 +115,11 @@ function violentCrime(ori) {
         .then(res => res.json())
         .then(function(json){
             if (json.results.length > 0) {
-                document.getElementById("violentCrime").innerHTML = 'Violent Crime: ' + json.results[0].actual;
+                document.getElementById("crimeType").innerHTML += '<li>Violent Crime: ' + json.results[0].actual + ' </li>';
                 totalCrime += json.results[0].actual;
                 document.getElementById("totalCrime").innerHTML = 'Total Crime Incidents in 2019: ' + totalCrime;
+            } else {
+                document.getElementById("totalCrime").innerHTML = 'No Data Found';
             }
     })
 }
@@ -127,9 +129,11 @@ function propertyCrime(ori) {
         .then(res => res.json())
         .then(function(json){
             if (json.results.length > 0) {
-                document.getElementById("propertyCrime").innerHTML = 'Property Crime: ' + json.results[0].actual;
+                document.getElementById("crimeType").innerHTML += '<li>Property Crime: ' + json.results[0].actual + ' </li>';
                 totalCrime += json.results[0].actual;
                 document.getElementById("totalCrime").innerHTML = 'Total Crime Incidents in 2019: ' + totalCrime;
+            } else {
+                document.getElementById("totalCrime").innerHTML = 'No Data Found';
             }
         })
 }
@@ -174,7 +178,7 @@ function processDisasters(data, state){
     j = 0;
     let disasterDetails = "";
     while (disasterTypes[j] != undefined) {
-        disasterDetails += disasterTypes[j] + ': ' + disasterCount[j] + '<br>';
+        disasterDetails += '<li>' + disasterTypes[j] + ': ' + disasterCount[j] + '</li>';
         j++;
     }
     console.log(disasterTypes);
