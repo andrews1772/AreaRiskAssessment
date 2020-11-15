@@ -21,7 +21,7 @@ function getCityState() {
     stateImage(state);
     document.getElementById("cityState").innerHTML = 'Information about ' + city + ', ' + state;
 
-    getCoordinates(city, state);
+    //getCoordinates(city, state);
     getOri(city, state);
     getNumberOfDisastersInState(state);
 }
@@ -98,7 +98,7 @@ function getWeather(city, state, lat, long, county) {
 
     fetch(`https://api.meteostat.net/v2/stations/nearby?lat=${lat}&lon=${long}`, {
     headers: {
-            "X-Api-Key": "jLCFxU01dr5LpQEqYoYLPP0DTbjnFA3e"
+            "X-Api-Key": "Ctr6uwisQ6EUppc1JyoKg9iw2F7mDtgu"
     }
     })
     .then(result => result.json())
@@ -118,7 +118,7 @@ function getWeather(city, state, lat, long, county) {
                         if (json.data[i].active == true) {
                             fetch("https://api.meteostat.net/v2/stations/meta?id=" + json.data[i].id, {
                                 headers: {
-                                   "X-Api-Key": "jLCFxU01dr5LpQEqYoYLPP0DTbjnFA3e"
+                                   "X-Api-Key": "Ctr6uwisQ6EUppc1JyoKg9iw2F7mDtgu"
                                }
                                })
                                .then(result => result.json())
@@ -156,7 +156,7 @@ function getStationClimate(stationID, dailyData) {
     if (!foundValidStation) {
     fetch("https://api.meteostat.net/v2/stations/meta?id=" + stationID, {
          headers: {
-            "X-Api-Key": "jLCFxU01dr5LpQEqYoYLPP0DTbjnFA3e"
+            "X-Api-Key": "Ctr6uwisQ6EUppc1JyoKg9iw2F7mDtgu"
         }
         })
         .then(result => result.json())
@@ -186,7 +186,7 @@ function getAverageClimate(json, stationID, startInt, endInt) {
     var encoded = encodeURI(url);
     fetch(encoded, {
         headers: {
-            "X-Api-Key": "jLCFxU01dr5LpQEqYoYLPP0DTbjnFA3e"
+            "X-Api-Key": "Ctr6uwisQ6EUppc1JyoKg9iw2F7mDtgu"
         }
         })
         .then(result => result.json())
@@ -566,7 +566,9 @@ function getNumberOfDisastersInState(state){
         .then(function(json){
             processDisasters(json.FemaWebDisasterDeclarations, state);
         })
+        .catch(error => console.log('error', error));
 }
+
 
 function processDisasters(data, state){
     let numberOfDisasters = 0;
