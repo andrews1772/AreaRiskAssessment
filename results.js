@@ -1,4 +1,5 @@
 let urlParams;
+let oriValue;
 (window.onpopstate = function () {
     let match,
         pl     = /\+/g,  // Regex for replacing addition symbol with a space
@@ -12,10 +13,48 @@ let urlParams;
 })();
 
 function getCityState() {
-    document.getElementById("city").innerHTML = urlParams["citySearch"];
-    document.getElementById("state").innerHTML = urlParams["stateSearch"];
+    let city = urlParams["citySearch"];
+    let state = urlParams["stateSearch"]
+    document.getElementById("city").innerHTML += city;
+    document.getElementById("state").innerHTML += state;
+    getOri(city, state);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
     getCityState();
 })
+
+function getOri(city, state) {
+    fetch('https://api.usa.gov/crime/fbi/sapi/api/agencies/list?API_KEY=7UqhaLCBzBdtdbC55K1C4WOfDLw95A4gCy9fa8RD')
+        .then(res => res.json())
+        .then(function(json){
+            let x = processCrime(json, city, state);
+            document.getElementById("ori").innerHTML += x;
+            violentCrime(x);
+        })
+}
+
+function processCrime(data, city, state) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].state_abbr == state) {
+            if (data[i].agency_type_name == 'City') {
+                if (data[i].agency_name.includes(city + ' Police')){
+                    return data[i].ori;
+                }
+            }
+        }
+    }
+}
+
+function violentCrime(ori) {
+    fetch ('https://api.usa.gov/crime/fbi/sapi/api/summarized/agencies/' + ori + '/violent-crime/2019/2019?API_KEY=7UqhaLCBzBdtdbC55K1C4WOfDLw95A4gCy9fa8RD')
+        .then(res => res.json())
+        .then(function(json){
+            console.log(json.results);
+            if (json.results.length < 1){
+                document.getElementById("violent-crime").innerHTML += 'No Data Available';
+            } else {
+                document.getElementById("violent-crime").innerHTML += json.results[0].actual;
+            }
+    })
+}
