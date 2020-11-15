@@ -83,7 +83,6 @@ function stateImage(state){
     for(let i = 0; i < states.length; i++){
         if(states[i][1] == state){
             document.getElementById("stateImg").innerHTML = '<img class="stateMap"" src="' + states[i][0] + '" alt="' + state + ' Map">';
-            console.log('<img src="' + states[i] + '" alt="' + state + ' Map">');
         }
     }
 }
@@ -181,9 +180,5 @@ function processDisasters(data, state){
         disasterDetails += '<li>' + disasterTypes[j] + ': ' + disasterCount[j] + '</li>';
         j++;
     }
-    console.log(disasterTypes);
     document.getElementById("disasterDetail").innerHTML = disasterDetails;
 }
-
-
-
