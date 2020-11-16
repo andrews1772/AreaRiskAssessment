@@ -67,12 +67,12 @@ function getCoordinates(city, state) {
 
             //use this for website
             if (county != null ) {
-                document.getElementById("county").innerHTML += county;
+                document.getElementById("county").innerHTML = 'County: ' + county;
             } else {
-                document.getElementById("county").innerHTML += "No Data";
+                document.getElementById("county").innerHTML = "County: No Data";
             }
-            document.getElementById("lat").innerHTML += lat;
-            document.getElementById("long").innerHTML += long;
+            document.getElementById("lat").innerHTML = 'Latitude: ' + lat;
+            document.getElementById("long").innerHTML = 'Longitude: ' + long;
 
             getAirQuality(city, state, lat, long, county);
         }
@@ -97,9 +97,9 @@ function getAirQuality(city, state, lat, long, county) {
             } else {
                 var aqi = json.data.current.pollution.aqius;
                 if (aqi != null ) {
-                    document.getElementById("aqi").innerHTML += aqi;
+                    document.getElementById("aqi").innerHTML = 'AQI: ' + aqi;
                 } else {
-                    document.getElementById("aqi").innerHTML += "No Data";
+                    document.getElementById("aqi").innerHTML = 'AQI: No Data';
                 }
                 getWeather(city, state, lat, long), county;
             }
@@ -179,9 +179,9 @@ function getStationClimate(stationID, dailyData) {
         .then(function(json) {
             elevation = (json.data.elevation * 3.28084).toFixed(1);
             if (elevation != null ) {
-                document.getElementById("elevation").innerHTML += elevation;
+                document.getElementById("elevation").innerHTML =  elevation + 'ft';
             } else {
-                document.getElementById("elevation").innerHTML += "No Data";
+                document.getElementById("elevation").innerHTML = 'No Data';
             }
             start = json.data.inventory.daily.start;
             end = json.data.inventory.daily.end;
@@ -369,25 +369,25 @@ function sumAverages(data) {
         snowAmount = (snowAmount / 25.4).toFixed(1);
 
 
-        document.getElementById("winAvg").innerHTML += winAvg;
-        document.getElementById("sprAvg").innerHTML += sprAvg;
-        document.getElementById("sumAvg").innerHTML += sumAvg;
-        document.getElementById("fallAvg").innerHTML += fallAvg;
+        document.getElementById("winAvg").innerHTML = winAvg;
+        document.getElementById("sprAvg").innerHTML = sprAvg;
+        document.getElementById("sumAvg").innerHTML = sumAvg;
+        document.getElementById("fallAvg").innerHTML = fallAvg;
 
-        document.getElementById("winAvgMin").innerHTML += winAvgMin;
-        document.getElementById("sprAvgMin").innerHTML += sprAvgMin;
-        document.getElementById("sumAvgMin").innerHTML += sumAvgMin;
-        document.getElementById("fallAvgMin").innerHTML += fallAvgMin;
+        document.getElementById("winAvgMin").innerHTML = winAvgMin;
+        document.getElementById("sprAvgMin").innerHTML = sprAvgMin;
+        document.getElementById("sumAvgMin").innerHTML = sumAvgMin;
+        document.getElementById("fallAvgMin").innerHTML = fallAvgMin;
 
-        document.getElementById("winAvgMax").innerHTML += winAvgMax;
-        document.getElementById("sprAvgMax").innerHTML += sprAvgMax;
-        document.getElementById("sumAvgMax").innerHTML += sumAvgMax;
-        document.getElementById("fallAvgMax").innerHTML += fallAvgMax;
+        document.getElementById("winAvgMax").innerHTML = winAvgMax;
+        document.getElementById("sprAvgMax").innerHTML = sprAvgMax;
+        document.getElementById("sumAvgMax").innerHTML = sumAvgMax;
+        document.getElementById("fallAvgMax").innerHTML = fallAvgMax;
 
-        document.getElementById("precipDays").innerHTML += prcpDays;
-        document.getElementById("snowDays").innerHTML += snowDays;
-        document.getElementById("snowYear").innerHTML += snowAmount;
-        document.getElementById("precipYear").innerHTML += prcpAmount;
+        document.getElementById("precipDays").innerHTML = 'Days of Precipitation: ' + prcpDays;
+        document.getElementById("snowDays").innerHTML = 'Days of Snow: ' +snowDays;
+        document.getElementById("snowYear").innerHTML = 'Snowfall per year (in): ' +snowAmount;
+        document.getElementById("precipYear").innerHTML = 'Rainfall per year (in): ' + prcpAmount;
 
 }
 
