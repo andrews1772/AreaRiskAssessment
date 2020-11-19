@@ -1,7 +1,7 @@
 # Area Risk Assessment
 Andrew Sanchez &amp; Jonathan Nutter - Hacking challenge for HackOHI/O - State Auto 2020
 
-Created a web application that reads a city and state and provide user with risk data on weather, air quality, natural disasters, and crime gathered from national database APIs for a given location
+Created a web application that provides users with risk data on weather, air quality, natural disasters, and crime gathered from national database APIs for a given location
 
 Known Bugs:
 
