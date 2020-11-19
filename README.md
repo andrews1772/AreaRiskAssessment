@@ -5,7 +5,8 @@ Created a web application that is able to read a city and state and provide data
 
 Known Bugs:
 
--Weather Data not displaying for given city - Due to API running out of queries on free key
-*Can be solved by providing new key
+-Weather data not displaying for given city - Due to API running out of queries on free key
 
--Natural Distaster Data Not Displaying for given city
+*Can be solved by providing new key*
+
+-Natural disaster data not displaying for given city
